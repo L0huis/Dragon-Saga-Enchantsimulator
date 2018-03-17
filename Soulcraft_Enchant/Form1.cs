@@ -28,6 +28,8 @@ namespace Soulcraft_Enchant
         public Form1()
         {
             InitializeComponent();
+            toolTip1.SetToolTip(fromELvl, "Level from which IS will be used");
+            toolTip2.SetToolTip(comboBoxFromSC, "Grade from wich IS will be used");
         }
 
         public double Enchant(bool isWeap, int from, int to, double chance, double percentage)
@@ -40,20 +42,29 @@ namespace Soulcraft_Enchant
             return expected;
         }
 
-        public void EnchantCall(bool isWeap = true, int from = 0, int to = 20, double chance = 0, double percentage = 0)
+        public void EnchantCall(out double isNeed, out double risNeed, bool isWeap = true, int from = 0, int to = 20, double chance = 0, double percentage = 0)
         {
+            isNeed = 0;
+            risNeed = 0;
+            if (to < from)
+            {
+                int temp = to;
+                to = from;
+                from = temp;
+            }
+
             if (from < 15 && to < 15)
             {
-                isNeeded.Text = (Math.Round(Enchant(isWeap, from, to, chance, percentage) * 1000) / 1000).ToString();
+                isNeed = Enchant(isWeap, from, to, chance, percentage);
             }
             else if (from >= 15 && to >= 15)
             {
-                risNeeded.Text = (Math.Round(Enchant(isWeap, from, to, chance, percentage) * 1000) / 1000).ToString();
+                risNeed = Enchant(isWeap, from, to, chance, percentage);
             }
             else
             {
-                isNeeded.Text = (Math.Round(Enchant(isWeap, from, 15, chance, percentage) * 1000) / 1000).ToString();
-                risNeeded.Text = (Math.Round(Enchant(isWeap, 15, to, chance, percentage) * 1000) / 1000).ToString();
+                isNeed = Enchant(isWeap, from, 15, chance, percentage);
+                risNeed = Enchant(isWeap, 15, to, chance, percentage);
             }
         }
 
@@ -67,20 +78,73 @@ namespace Soulcraft_Enchant
             return expected;
         }
 
-        public void SoulcraftCall(string from = "Advanced", string to = "Legend", double chance = 0, double percentage = 0)
+        public void SoulcraftCall(out double isNeed, string from = "Advanced", string to = "Legend", double chance = 0, double percentage = 0)
         {
+            int fromInt = getGrade(from);
+            int toInt = getGrade(to);
+            isNeed = 0;
 
+            if (toInt < fromInt)
+            {
+                int temp = toInt;
+                toInt = fromInt;
+                fromInt = temp;
+            }
+            isNeed = Soulcraft(fromInt, toInt, chance, percentage);
+        }
+
+        public int getGrade(string sGrade)
+        {
+            if (sGrade.Equals("Normal"))
+            {
+                return 0;
+            }
+            else if (sGrade.Equals("Advanced"))
+            {
+                return 1;
+            }
+            else if (sGrade.Equals("Special"))
+            {
+                return 2;
+            }
+            else if (sGrade.Equals("Artifact"))
+            {
+                return 3;
+            }
+            else if (sGrade.Equals("Legend"))
+            {
+                return 4;
+            }
+            else
+            {
+                return -1;
+            }
         }
         
         private void button1_Click(object sender, EventArgs e)
         {
             double chanceincrease = chanceIncrease.Text.Equals("") ? 0 : Double.Parse(chanceIncrease.Text) / 100;
             double percentage = hasEWBuff.Checked ? 0.2 : 0;
+            double totalISNeeded = 0;
+            double totalRISNeeded = 0;
+            double isNeeded;
+            double risNeeded;
+
 
             if (doEnchanting.Checked)
             {
-                EnchantCall(weapOrArmor.Text.Equals("Weapon"), (int)fromELvl.Value, (int)toELvl.Value, chanceincrease, percentage);
+                EnchantCall(out isNeeded, out risNeeded, weapOrArmor.Text.Equals("Weapon"), (int)fromELvl.Value, (int)toELvl.Value, chanceincrease, percentage);
+                totalISNeeded += isNeeded;
+                totalRISNeeded += risNeeded;
             }
+            if (doSoulcraft.Checked)
+            {
+                SoulcraftCall(out isNeeded, comboBoxFromSC.Text, comboBoxToSC.Text, chanceincrease, percentage);
+                totalISNeeded += isNeeded;
+            }
+
+            labelIsNeeded.Text = (Math.Round(totalISNeeded * 1000) / 1000).ToString();
+            labelRisNeeded.Text = (Math.Round(totalRISNeeded * 1000) / 1000).ToString();
         }
 
         private void doEnchanting_CheckedChanged(object sender, EventArgs e)
@@ -102,6 +166,24 @@ namespace Soulcraft_Enchant
                 weapOrArmor.Hide();
                 fromELvl.Hide();
                 toELvl.Hide();
+            }
+        }
+
+        private void doSoulcraft_CheckedChanged(object sender, EventArgs e)
+        {
+            if (doSoulcraft.Checked)
+            {
+                labelFromSC.Show();
+                labelToSC.Show();
+                comboBoxFromSC.Show();
+                comboBoxToSC.Show();
+            }
+            else
+            {
+                labelFromSC.Hide();
+                labelToSC.Hide();
+                comboBoxFromSC.Hide();
+                comboBoxToSC.Hide();
             }
         }
     }
