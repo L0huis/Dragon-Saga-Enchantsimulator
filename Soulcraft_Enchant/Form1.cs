@@ -29,7 +29,11 @@ namespace Soulcraft_Enchant
         {
             InitializeComponent();
             toolTip1.SetToolTip(fromELvl, "Level from which IS will be used");
-            toolTip2.SetToolTip(comboBoxFromSC, "Grade from wich IS will be used");
+            toolTip1.SetToolTip(comboBoxFromSC, "Grade from wich IS will be used");
+            toolTip1.SetToolTip(hasEWBuff, "Adds 20% on baseprobability");
+            toolTip1.SetToolTip(labelEmporiaBuff, "Adds 20% on baseprobability");
+            toolTip1.SetToolTip(doEnchanting, "Enables Enchaning");
+            toolTip1.SetToolTip(doSoulcraft, "Enables Soulcrafting");
         }
 
         public double Enchant(bool isWeap, int from, int to, double chance, double percentage)
@@ -53,11 +57,11 @@ namespace Soulcraft_Enchant
                 from = temp;
             }
 
-            if (from < 15 && to < 15)
+            if (from < 15 && to <= 15)
             {
                 isNeed = Enchant(isWeap, from, to, chance, percentage);
             }
-            else if (from >= 15 && to >= 15)
+            else if (from >= 15 && to > 15)
             {
                 risNeed = Enchant(isWeap, from, to, chance, percentage);
             }
@@ -80,8 +84,8 @@ namespace Soulcraft_Enchant
 
         public void SoulcraftCall(out double isNeed, string from = "Advanced", string to = "Legend", double chance = 0, double percentage = 0)
         {
-            int fromInt = getGrade(from);
-            int toInt = getGrade(to);
+            int fromInt = GetGrade(from);
+            int toInt = GetGrade(to);
             isNeed = 0;
 
             if (toInt < fromInt)
@@ -93,7 +97,7 @@ namespace Soulcraft_Enchant
             isNeed = Soulcraft(fromInt, toInt, chance, percentage);
         }
 
-        public int getGrade(string sGrade)
+        public int GetGrade(string sGrade)
         {
             if (sGrade.Equals("Normal"))
             {
@@ -120,15 +124,72 @@ namespace Soulcraft_Enchant
                 return -1;
             }
         }
-        
+
+        public void getVarianceEnchant(out double varIS, out double varRIS, double expectIS, double expectRIS, bool isWeap, int from, int to)
+        {
+            if (to < from)
+            {
+                int temp = to;
+                to = from;
+                from = temp;
+            }
+            varIS = 0;
+            varRIS = 0;
+            if (from < 15 && to <= 15)
+            {
+                for (int i = from; i < to; i++)
+                {
+                    varIS += isWeap ? ((1 / pW[i] - expectIS) * (1 / pW[i] - expectIS) * pW[i]) : ((1 / pA[i] - expectIS) * (1 / pA[i] - expectIS) * pA[i]);
+                }
+            }
+            else if (from >= 15 && to > 15)
+            {
+                for (int i = 15; i < 20; i++)
+                {
+                    varRIS += isWeap ? ((1 / pW[i] - expectRIS) * (1 / pW[i] - expectRIS) * pW[i]) : ((1 / pA[i] - expectRIS) * (1 / pA[i] - expectRIS) * pA[i]);
+                }
+            }
+            else
+            {
+                for (int i = from; i < 15; i++)
+                {
+                    varIS += isWeap ? ((1 / pW[i] - expectIS) * (1 / pW[i] - expectIS) * pW[i]) : ((1 / pA[i] - expectIS) * (1 / pA[i] - expectIS) * pA[i]);
+                }
+                for (int i = 15; i < to; i++)
+                {
+                    varRIS += isWeap ? ((1 / pW[i] - expectRIS) * (1 / pW[i] - expectRIS) * pW[i]) : ((1 / pA[i] - expectRIS) * (1 / pA[i] - expectRIS) * pA[i]);
+                }
+            }
+
+        }
+
+        public void getVarianceSoul(out double var, double expect, int from, int to)
+        {
+            if (to < from)
+            {
+                int temp = to;
+                to = from;
+                from = temp;
+            }
+            var = 0;
+            for (int i = from; i < to; i++)
+            {
+                var += (1 / pS[i] - expect) * (1 / pS[i] - expect) * pS[i];
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             double chanceincrease = chanceIncrease.Text.Equals("") ? 0 : Double.Parse(chanceIncrease.Text) / 100;
-            double percentage = hasEWBuff.Checked ? 0.2 : 0;
+            double percentage = (hasEWBuff.Checked ? 0.2 : 0) + (textBoxEnchantEvent.Text.Equals("") ? 0 : Double.Parse(textBoxEnchantEvent.Text) / 100);
             double totalISNeeded = 0;
             double totalRISNeeded = 0;
+            double totalISSoulNeeded = 0;
             double isNeeded;
             double risNeeded;
+            double varianceIS = 0;
+            double varianceRIS = 0;
+            double varianceSoul = 0;
 
 
             if (doEnchanting.Checked)
@@ -140,11 +201,18 @@ namespace Soulcraft_Enchant
             if (doSoulcraft.Checked)
             {
                 SoulcraftCall(out isNeeded, comboBoxFromSC.Text, comboBoxToSC.Text, chanceincrease, percentage);
-                totalISNeeded += isNeeded;
+                totalISSoulNeeded += isNeeded;
             }
+
+            getVarianceEnchant(out varianceIS, out varianceRIS, totalISNeeded, totalRISNeeded, true, (int)fromELvl.Value, (int)toELvl.Value);
+            getVarianceSoul(out varianceSoul, totalISSoulNeeded, GetGrade(comboBoxFromSC.Text), GetGrade(comboBoxToSC.Text));
 
             labelIsNeeded.Text = (Math.Round(totalISNeeded * 1000) / 1000).ToString();
             labelRisNeeded.Text = (Math.Round(totalRISNeeded * 1000) / 1000).ToString();
+            labelIsSoulNeeded.Text = (Math.Round(totalISSoulNeeded * 1000) / 1000).ToString();
+            outStandardDeviationIS.Text = (Math.Round(Math.Sqrt(varianceIS) * 1000) / 1000).ToString();
+            outStandardDeviationRIS.Text = (Math.Round(Math.Sqrt(varianceRIS) * 1000) / 1000).ToString();
+            outStandardDeviationSoul.Text = (Math.Round(Math.Sqrt(varianceSoul) * 1000) / 1000).ToString();
         }
 
         private void doEnchanting_CheckedChanged(object sender, EventArgs e)
