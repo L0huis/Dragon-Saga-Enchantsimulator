@@ -41,7 +41,7 @@ namespace Soulcraft_Enchant
             double expected = 0;
             for (int i = from; i < to; i++)
             {
-                expected += isWeap ? 1 / (chance + pW[i] * (percentage + 1)) : 1 / (chance + pA[i] * (percentage + 1));
+                expected += isWeap ? GetExpected(pW, i, chance, percentage) : GetExpected(pA, i, chance, percentage);
             }
             return expected;
         }
@@ -77,7 +77,7 @@ namespace Soulcraft_Enchant
             double expected = 0;
             for (int i = from; i < to; i++)
             {
-                expected += 1 / (chance + pS[i] * (percentage + 1));
+                expected += GetExpected(pS, i, chance, percentage);
             }
             return expected;
         }
@@ -139,35 +139,34 @@ namespace Soulcraft_Enchant
             {
                 for (int i = from; i < to; i++)
                 {
-                    varIS += isWeap ? ((1 / (chance + pW[i] * (percentage + 1)) - expectIS) * (1 / (chance + pW[i] * (percentage + 1)) - expectIS) * (chance + pW[i] * (percentage + 1))) 
-                                    : ((1 / (chance + pA[i] * (percentage + 1)) - expectIS) * (1 / (chance + pA[i] * (percentage + 1)) - expectIS) * (chance + pA[i] * (percentage + 1)));
+                    varIS += isWeap ? (VarPartSquared(pW, i, chance, percentage, expectIS) * GetChance(pW, i, chance, percentage))
+                                    : (VarPartSquared(pA, i, chance, percentage, expectIS) * GetChance(pA, i, chance, percentage));
                 }
             }
             else if (from >= 15 && to > 15)
             {
                 for (int i = 15; i < to; i++)
                 {
-                    varRIS += isWeap ? ((1 / (chance + pW[i] * (percentage + 1)) - expectRIS) * (1 / (chance + pW[i] * (percentage + 1)) - expectRIS) * (chance + pW[i] * (percentage + 1))) 
-                                     : ((1 / (chance + pA[i] * (percentage + 1)) - expectRIS) * (1 / (chance + pA[i] * (percentage + 1)) - expectRIS) * (chance + pA[i] * (percentage + 1)));
+                    varRIS += isWeap ? (VarPartSquared(pW, i, chance, percentage, expectRIS) * GetChance(pW, i, chance, percentage))
+                                     : (VarPartSquared(pA, i, chance, percentage, expectRIS) * GetChance(pA, i, chance, percentage));
                 }
             }
             else
             {
                 for (int i = from; i < 15; i++)
                 {
-                    varIS += isWeap ? ((1 / (chance + pW[i] * (percentage + 1)) - expectIS) * (1 / (chance + pW[i] * (percentage + 1)) - expectIS) * (chance + pW[i] * (percentage + 1))) 
-                                    : ((1 / (chance + pA[i] * (percentage + 1)) - expectIS) * (1 / (chance + pA[i] * (percentage + 1)) - expectIS) * (chance + pA[i] * (percentage + 1)));
+                    varIS += isWeap ? (VarPartSquared(pW, i, chance, percentage, expectIS) * GetChance(pW, i, chance, percentage))
+                                    : (VarPartSquared(pA, i, chance, percentage, expectIS) * GetChance(pA, i, chance, percentage));
                 }
                 for (int i = 15; i < to; i++)
                 {
-                    varRIS += isWeap ? ((1 / (chance + pW[i] * (percentage + 1)) - expectRIS) * (1 / (chance + pW[i] * (percentage + 1)) - expectRIS) * (chance + pW[i] * (percentage + 1))) 
-                                     : ((1 / (chance + pA[i] * (percentage + 1)) - expectRIS) * (1 / (chance + pA[i] * (percentage + 1)) - expectRIS) * (chance + pA[i] * (percentage + 1)));
+                    varRIS += isWeap ? (VarPartSquared(pW, i, chance, percentage, expectRIS) * GetChance(pW, i, chance, percentage))
+                                     : (VarPartSquared(pA, i, chance, percentage, expectRIS) * GetChance(pA, i, chance, percentage));
                 }
             }
-
         }
 
-        public void getVarianceSoul(out double var, double expect, int from, int to, double chance, double percentage)
+        public void GetVarianceSoul(out double var, double expect, int from, int to, double chance, double percentage)
         {
             if (to < from)
             {
@@ -178,8 +177,23 @@ namespace Soulcraft_Enchant
             var = 0;
             for (int i = from; i < to; i++)
             {
-                var += (1 / (chance + pS[i] * (percentage + 1) - expect)) * (1 / (chance + pS[i] * (percentage + 1) - expect)) * (chance + pS[i] * (percentage + 1));
+                var += VarPartSquared(pS, i, chance, percentage, expect) * GetChance(pS, i, chance, percentage);
             }
+        }
+
+        public double GetExpected(double[] arr, int index, double chance, double percentage)
+        {
+            return 1 / GetChance(arr, index, chance, percentage);
+        }
+
+        public double GetChance(double[] arr, int index, double chance, double percentage)
+        {
+            return (chance + arr[index] * (percentage + 1)) > 1 ? 1 : (chance + arr[index] * (percentage + 1));
+        }
+
+        public double VarPartSquared(double[] arr, int index, double chance, double percentage, double expected)
+        {
+            return (1 / GetChance(arr, index, chance, percentage) - expected) * (1 / GetChance(arr, index, chance, percentage) - expected);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -206,7 +220,7 @@ namespace Soulcraft_Enchant
             if (doSoulcraft.Checked)
             {
                 SoulcraftCall(out isNeeded, comboBoxFromSC.Text, comboBoxToSC.Text, chanceincrease, percentage);
-                getVarianceSoul(out varianceSoul, totalISSoulNeeded, GetGrade(comboBoxFromSC.Text), GetGrade(comboBoxToSC.Text), chanceincrease, percentage);
+                GetVarianceSoul(out varianceSoul, totalISSoulNeeded, GetGrade(comboBoxFromSC.Text), GetGrade(comboBoxToSC.Text), chanceincrease, percentage);
                 totalISSoulNeeded += isNeeded;
             }
 
