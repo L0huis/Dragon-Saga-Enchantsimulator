@@ -32,8 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.numberOfItems = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelIsSoulNeeded = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelOutTotalRIS = new System.Windows.Forms.Label();
+            this.labelTotalRIS = new System.Windows.Forms.Label();
+            this.labelOutTotalIS = new System.Windows.Forms.Label();
+            this.labelTotalIS = new System.Windows.Forms.Label();
+            this.labelEnchantEvent = new System.Windows.Forms.Label();
             this.textBoxEnchantEvent = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxToSC = new System.Windows.Forms.ComboBox();
@@ -78,16 +85,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.labelStandardDeviationIS = new System.Windows.Forms.Label();
-            this.outStandardDeviationIS = new System.Windows.Forms.Label();
-            this.labelStandardDeviationRIS = new System.Windows.Forms.Label();
-            this.outStandardDeviationRIS = new System.Windows.Forms.Label();
-            this.labelStandardDeviationSoul = new System.Windows.Forms.Label();
-            this.outStandardDeviationSoul = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.labelIsSoulNeeded = new System.Windows.Forms.Label();
+            this.buttonResetTotal = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toELvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromELvl)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -108,16 +109,16 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.buttonResetTotal);
+            this.tabPage1.Controls.Add(this.numberOfItems);
+            this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.labelIsSoulNeeded);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.outStandardDeviationSoul);
-            this.tabPage1.Controls.Add(this.labelStandardDeviationSoul);
-            this.tabPage1.Controls.Add(this.outStandardDeviationRIS);
-            this.tabPage1.Controls.Add(this.labelStandardDeviationRIS);
-            this.tabPage1.Controls.Add(this.outStandardDeviationIS);
-            this.tabPage1.Controls.Add(this.labelStandardDeviationIS);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.labelOutTotalRIS);
+            this.tabPage1.Controls.Add(this.labelTotalRIS);
+            this.tabPage1.Controls.Add(this.labelOutTotalIS);
+            this.tabPage1.Controls.Add(this.labelTotalIS);
+            this.tabPage1.Controls.Add(this.labelEnchantEvent);
             this.tabPage1.Controls.Add(this.textBoxEnchantEvent);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.comboBoxToSC);
@@ -149,23 +150,96 @@
             this.tabPage1.Text = "Crafting";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // numberOfItems
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(295, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "%";
+            this.numberOfItems.Location = new System.Drawing.Point(254, 28);
+            this.numberOfItems.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numberOfItems.Name = "numberOfItems";
+            this.numberOfItems.Size = new System.Drawing.Size(41, 20);
+            this.numberOfItems.TabIndex = 38;
+            this.numberOfItems.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(170, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Enchant event:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(170, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 13);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "# of Items:";
+            // 
+            // labelIsSoulNeeded
+            // 
+            this.labelIsSoulNeeded.AutoSize = true;
+            this.labelIsSoulNeeded.Location = new System.Drawing.Point(123, 219);
+            this.labelIsSoulNeeded.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.labelIsSoulNeeded.Name = "labelIsSoulNeeded";
+            this.labelIsSoulNeeded.Size = new System.Drawing.Size(13, 13);
+            this.labelIsSoulNeeded.TabIndex = 36;
+            this.labelIsSoulNeeded.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 219);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "IS needed (Soulcraft):";
+            // 
+            // labelOutTotalRIS
+            // 
+            this.labelOutTotalRIS.AutoSize = true;
+            this.labelOutTotalRIS.Location = new System.Drawing.Point(282, 196);
+            this.labelOutTotalRIS.Name = "labelOutTotalRIS";
+            this.labelOutTotalRIS.Size = new System.Drawing.Size(13, 13);
+            this.labelOutTotalRIS.TabIndex = 31;
+            this.labelOutTotalRIS.Text = "0";
+            // 
+            // labelTotalRIS
+            // 
+            this.labelTotalRIS.AutoSize = true;
+            this.labelTotalRIS.Location = new System.Drawing.Point(170, 196);
+            this.labelTotalRIS.Name = "labelTotalRIS";
+            this.labelTotalRIS.Size = new System.Drawing.Size(91, 13);
+            this.labelTotalRIS.TabIndex = 30;
+            this.labelTotalRIS.Text = "Total RIS needed";
+            // 
+            // labelOutTotalIS
+            // 
+            this.labelOutTotalIS.AutoSize = true;
+            this.labelOutTotalIS.Location = new System.Drawing.Point(282, 173);
+            this.labelOutTotalIS.Name = "labelOutTotalIS";
+            this.labelOutTotalIS.Size = new System.Drawing.Size(13, 13);
+            this.labelOutTotalIS.TabIndex = 29;
+            this.labelOutTotalIS.Text = "0";
+            // 
+            // labelTotalIS
+            // 
+            this.labelTotalIS.AutoSize = true;
+            this.labelTotalIS.Location = new System.Drawing.Point(170, 173);
+            this.labelTotalIS.Name = "labelTotalIS";
+            this.labelTotalIS.Size = new System.Drawing.Size(86, 13);
+            this.labelTotalIS.TabIndex = 28;
+            this.labelTotalIS.Text = "Total IS needed:";
+            // 
+            // labelEnchantEvent
+            // 
+            this.labelEnchantEvent.AutoSize = true;
+            this.labelEnchantEvent.Location = new System.Drawing.Point(170, 8);
+            this.labelEnchantEvent.Name = "labelEnchantEvent";
+            this.labelEnchantEvent.Size = new System.Drawing.Size(80, 13);
+            this.labelEnchantEvent.TabIndex = 26;
+            this.labelEnchantEvent.Text = "Enchant event:";
             // 
             // textBoxEnchantEvent
             // 
@@ -666,79 +740,15 @@
             this.label4.TabIndex = 8;
             this.label4.Text = resources.GetString("label4.Text");
             // 
-            // labelStandardDeviationIS
+            // buttonResetTotal
             // 
-            this.labelStandardDeviationIS.AutoSize = true;
-            this.labelStandardDeviationIS.Location = new System.Drawing.Point(170, 173);
-            this.labelStandardDeviationIS.Name = "labelStandardDeviationIS";
-            this.labelStandardDeviationIS.Size = new System.Drawing.Size(112, 13);
-            this.labelStandardDeviationIS.TabIndex = 28;
-            this.labelStandardDeviationIS.Text = "Standard deviation IS:";
-            // 
-            // outStandardDeviationIS
-            // 
-            this.outStandardDeviationIS.AutoSize = true;
-            this.outStandardDeviationIS.Location = new System.Drawing.Point(299, 173);
-            this.outStandardDeviationIS.Name = "outStandardDeviationIS";
-            this.outStandardDeviationIS.Size = new System.Drawing.Size(13, 13);
-            this.outStandardDeviationIS.TabIndex = 29;
-            this.outStandardDeviationIS.Text = "0";
-            // 
-            // labelStandardDeviationRIS
-            // 
-            this.labelStandardDeviationRIS.AutoSize = true;
-            this.labelStandardDeviationRIS.Location = new System.Drawing.Point(170, 196);
-            this.labelStandardDeviationRIS.Name = "labelStandardDeviationRIS";
-            this.labelStandardDeviationRIS.Size = new System.Drawing.Size(120, 13);
-            this.labelStandardDeviationRIS.TabIndex = 30;
-            this.labelStandardDeviationRIS.Text = "Standard deviation RIS:";
-            // 
-            // outStandardDeviationRIS
-            // 
-            this.outStandardDeviationRIS.AutoSize = true;
-            this.outStandardDeviationRIS.Location = new System.Drawing.Point(299, 196);
-            this.outStandardDeviationRIS.Name = "outStandardDeviationRIS";
-            this.outStandardDeviationRIS.Size = new System.Drawing.Size(13, 13);
-            this.outStandardDeviationRIS.TabIndex = 31;
-            this.outStandardDeviationRIS.Text = "0";
-            // 
-            // labelStandardDeviationSoul
-            // 
-            this.labelStandardDeviationSoul.AutoSize = true;
-            this.labelStandardDeviationSoul.Location = new System.Drawing.Point(170, 219);
-            this.labelStandardDeviationSoul.Name = "labelStandardDeviationSoul";
-            this.labelStandardDeviationSoul.Size = new System.Drawing.Size(123, 13);
-            this.labelStandardDeviationSoul.TabIndex = 33;
-            this.labelStandardDeviationSoul.Text = "Standard deviation Soul:";
-            // 
-            // outStandardDeviationSoul
-            // 
-            this.outStandardDeviationSoul.AutoSize = true;
-            this.outStandardDeviationSoul.Location = new System.Drawing.Point(299, 219);
-            this.outStandardDeviationSoul.Name = "outStandardDeviationSoul";
-            this.outStandardDeviationSoul.Size = new System.Drawing.Size(13, 13);
-            this.outStandardDeviationSoul.TabIndex = 34;
-            this.outStandardDeviationSoul.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 219);
-            this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 13);
-            this.label6.TabIndex = 35;
-            this.label6.Text = "IS needed (Soulcraft):";
-            // 
-            // labelIsSoulNeeded
-            // 
-            this.labelIsSoulNeeded.AutoSize = true;
-            this.labelIsSoulNeeded.Location = new System.Drawing.Point(123, 219);
-            this.labelIsSoulNeeded.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.labelIsSoulNeeded.Name = "labelIsSoulNeeded";
-            this.labelIsSoulNeeded.Size = new System.Drawing.Size(13, 13);
-            this.labelIsSoulNeeded.TabIndex = 36;
-            this.labelIsSoulNeeded.Text = "0";
+            this.buttonResetTotal.Location = new System.Drawing.Point(173, 214);
+            this.buttonResetTotal.Name = "buttonResetTotal";
+            this.buttonResetTotal.Size = new System.Drawing.Size(122, 23);
+            this.buttonResetTotal.TabIndex = 39;
+            this.buttonResetTotal.Text = "Reset Total";
+            this.buttonResetTotal.UseVisualStyleBackColor = true;
+            this.buttonResetTotal.Click += new System.EventHandler(this.buttonResetTotal_Click);
             // 
             // Form1
             // 
@@ -752,6 +762,7 @@
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toELvl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromELvl)).EndInit();
             this.tabPage2.ResumeLayout(false);
@@ -806,18 +817,18 @@
         private System.Windows.Forms.Label labelToSC;
         private System.Windows.Forms.Label labelFromSC;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelEnchantEvent;
         private System.Windows.Forms.TextBox textBoxEnchantEvent;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label outStandardDeviationIS;
-        private System.Windows.Forms.Label labelStandardDeviationIS;
-        private System.Windows.Forms.Label outStandardDeviationRIS;
-        private System.Windows.Forms.Label labelStandardDeviationRIS;
-        private System.Windows.Forms.Label outStandardDeviationSoul;
-        private System.Windows.Forms.Label labelStandardDeviationSoul;
+        private System.Windows.Forms.Label labelOutTotalIS;
+        private System.Windows.Forms.Label labelTotalIS;
+        private System.Windows.Forms.Label labelOutTotalRIS;
+        private System.Windows.Forms.Label labelTotalRIS;
         private System.Windows.Forms.Label labelIsSoulNeeded;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numberOfItems;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonResetTotal;
     }
 }
 

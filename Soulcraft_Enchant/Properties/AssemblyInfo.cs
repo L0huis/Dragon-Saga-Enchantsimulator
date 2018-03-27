@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Soulcraft_Enchant")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Dragon Saga Soulcraft/Enchant Simulator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Julian Lhuis")]
 [assembly: AssemblyProduct("Soulcraft_Enchant")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]

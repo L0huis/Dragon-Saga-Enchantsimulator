@@ -24,6 +24,8 @@ namespace Soulcraft_Enchant
         {
             0.06, 0.04, 0.02, 0.02
         };
+        double grandTIS = 0;
+        double grandTRIS = 0;
 
         public Form1()
         {
@@ -34,6 +36,8 @@ namespace Soulcraft_Enchant
             toolTip1.SetToolTip(labelEmporiaBuff, "Adds 20% on baseprobability");
             toolTip1.SetToolTip(doEnchanting, "Enables Enchaning");
             toolTip1.SetToolTip(doSoulcraft, "Enables Soulcrafting");
+            toolTip1.SetToolTip(labelEnchantEvent, "Multiplier from Enchant event (e.g 1, 1.5, 2)");
+            toolTip1.SetToolTip(textBoxEnchantEvent, "Multiplier from Enchant event (e.g 1, 1.5, 2)");
         }
 
         public double Enchant(bool isWeap, int from, int to, double chance, double percentage)
@@ -198,39 +202,40 @@ namespace Soulcraft_Enchant
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double chanceincrease = chanceIncrease.Text.Equals("") ? 0 : Double.Parse(chanceIncrease.Text) / 100;
-            double percentage = (hasEWBuff.Checked ? 0.2 : 0) + (textBoxEnchantEvent.Text.Equals("") ? 0 : Double.Parse(textBoxEnchantEvent.Text) / 100);
+            double chanceincrease = chanceIncrease.Text.Equals("") || Double.Parse(chanceIncrease.Text) <= 0 ? 0 : Double.Parse(chanceIncrease.Text) / 100;
+            double percentage = (hasEWBuff.Checked ? 0.2 : 0) + (textBoxEnchantEvent.Text.Equals("") || Double.Parse(textBoxEnchantEvent.Text) <= 0 ? 0 : Double.Parse(textBoxEnchantEvent.Text) - 1);
             double totalISNeeded = 0;
             double totalRISNeeded = 0;
             double totalISSoulNeeded = 0;
             double isNeeded;
             double risNeeded;
-            double varianceIS = 0;
-            double varianceRIS = 0;
-            double varianceSoul = 0;
+            //double varianceIS = 0;
+            //double varianceRIS = 0;
+            //double varianceSoul = 0;
 
 
             if (doEnchanting.Checked)
             {
                 EnchantCall(out isNeeded, out risNeeded, weapOrArmor.Text.Equals("Weapon"), (int)fromELvl.Value, (int)toELvl.Value, chanceincrease, percentage);
-                getVarianceEnchant(out varianceIS, out varianceRIS, totalISNeeded, totalRISNeeded, true, (int)fromELvl.Value, (int)toELvl.Value, chanceincrease, percentage);
-                totalISNeeded += isNeeded;
-                totalRISNeeded += risNeeded;
+                //getVarianceEnchant(out varianceIS, out varianceRIS, totalISNeeded, totalRISNeeded, true, (int)fromELvl.Value, (int)toELvl.Value, chanceincrease, percentage);
+                totalISNeeded += isNeeded * (int)numberOfItems.Value;
+                totalRISNeeded += risNeeded * (int)numberOfItems.Value;
             }
             if (doSoulcraft.Checked)
             {
                 SoulcraftCall(out isNeeded, comboBoxFromSC.Text, comboBoxToSC.Text, chanceincrease, percentage);
-                GetVarianceSoul(out varianceSoul, totalISSoulNeeded, GetGrade(comboBoxFromSC.Text), GetGrade(comboBoxToSC.Text), chanceincrease, percentage);
-                totalISSoulNeeded += isNeeded;
+                //GetVarianceSoul(out varianceSoul, totalISSoulNeeded, GetGrade(comboBoxFromSC.Text), GetGrade(comboBoxToSC.Text), chanceincrease, percentage);
+                totalISSoulNeeded += isNeeded * (int)numberOfItems.Value;
             }
 
+            grandTIS += totalISNeeded + totalISSoulNeeded;
+            grandTRIS += totalRISNeeded;
 
             labelIsNeeded.Text = (Math.Round(totalISNeeded * 1000) / 1000).ToString();
             labelRisNeeded.Text = (Math.Round(totalRISNeeded * 1000) / 1000).ToString();
             labelIsSoulNeeded.Text = (Math.Round(totalISSoulNeeded * 1000) / 1000).ToString();
-            outStandardDeviationIS.Text = (Math.Round(Math.Sqrt(varianceIS) * 1000) / 1000).ToString();
-            outStandardDeviationRIS.Text = (Math.Round(Math.Sqrt(varianceRIS) * 1000) / 1000).ToString();
-            outStandardDeviationSoul.Text = (Math.Round(Math.Sqrt(varianceSoul) * 1000) / 1000).ToString();
+            labelOutTotalIS.Text = (Math.Round(grandTIS * 1000) / 1000).ToString();
+            labelOutTotalRIS.Text = (Math.Round(grandTRIS * 1000) / 1000).ToString();
         }
 
         private void doEnchanting_CheckedChanged(object sender, EventArgs e)
@@ -271,6 +276,14 @@ namespace Soulcraft_Enchant
                 comboBoxFromSC.Hide();
                 comboBoxToSC.Hide();
             }
+        }
+
+        private void buttonResetTotal_Click(object sender, EventArgs e)
+        {
+            labelOutTotalIS.Text = "0";
+            labelOutTotalRIS.Text = "0";
+            grandTIS = 0;
+            grandTRIS = 0;
         }
     }
 }
