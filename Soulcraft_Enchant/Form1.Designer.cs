@@ -31,40 +31,44 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPageCrafting = new System.Windows.Forms.TabPage();
+            this.labelTotalRIS = new System.Windows.Forms.Label();
+            this.labelTotalIS = new System.Windows.Forms.Label();
+            this.labelSuccessProbability2 = new System.Windows.Forms.Label();
+            this.textBoxSuccessProbability = new System.Windows.Forms.TextBox();
+            this.labelSuccessProbability = new System.Windows.Forms.Label();
+            this.buttonResetTotal = new System.Windows.Forms.Button();
             this.numberOfItems = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelNumOfItems = new System.Windows.Forms.Label();
             this.labelIsSoulNeeded = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.labelOutTotalRIS = new System.Windows.Forms.Label();
-            this.labelTotalRIS = new System.Windows.Forms.Label();
             this.labelOutTotalIS = new System.Windows.Forms.Label();
-            this.labelTotalIS = new System.Windows.Forms.Label();
             this.labelEnchantEvent = new System.Windows.Forms.Label();
             this.textBoxEnchantEvent = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelChanceIncrease2 = new System.Windows.Forms.Label();
             this.comboBoxToSC = new System.Windows.Forms.ComboBox();
             this.comboBoxFromSC = new System.Windows.Forms.ComboBox();
             this.labelToSC = new System.Windows.Forms.Label();
             this.labelFromSC = new System.Windows.Forms.Label();
-            this.doSoulcraft = new System.Windows.Forms.CheckBox();
-            this.doEnchanting = new System.Windows.Forms.CheckBox();
+            this.checkBoxDoSoulcraft = new System.Windows.Forms.CheckBox();
+            this.checkBoxDoEnchanting = new System.Windows.Forms.CheckBox();
             this.labelRisNeeded = new System.Windows.Forms.Label();
             this.labelIsNeeded = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.chanceIncrease = new System.Windows.Forms.TextBox();
+            this.buttonCraft = new System.Windows.Forms.Button();
+            this.textBoxChanceIncrease = new System.Windows.Forms.TextBox();
             this.labelChanceIncrease = new System.Windows.Forms.Label();
-            this.hasEWBuff = new System.Windows.Forms.CheckBox();
+            this.checkBoxhasEWBuff = new System.Windows.Forms.CheckBox();
             this.labelEmporiaBuff = new System.Windows.Forms.Label();
             this.toELvl = new System.Windows.Forms.NumericUpDown();
             this.labelTo = new System.Windows.Forms.Label();
             this.fromELvl = new System.Windows.Forms.NumericUpDown();
             this.labelFrom = new System.Windows.Forms.Label();
-            this.weapOrArmor = new System.Windows.Forms.ComboBox();
+            this.comboBoxWeapOrArmor = new System.Windows.Forms.ComboBox();
             this.labelItemToEnchant = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageProbabilities = new System.Windows.Forms.TabPage();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -85,70 +89,136 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonResetTotal = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPageCrafting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toELvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromELvl)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabPageProbabilities.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Controls.Add(this.tabPageCrafting);
+            this.tabControl.Controls.Add(this.tabPageProbabilities);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.ItemSize = new System.Drawing.Size(400, 18);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(353, 264);
+            this.tabControl.Size = new System.Drawing.Size(351, 296);
             this.tabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageCrafting
             // 
-            this.tabPage1.Controls.Add(this.buttonResetTotal);
-            this.tabPage1.Controls.Add(this.numberOfItems);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.labelIsSoulNeeded);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.labelOutTotalRIS);
-            this.tabPage1.Controls.Add(this.labelTotalRIS);
-            this.tabPage1.Controls.Add(this.labelOutTotalIS);
-            this.tabPage1.Controls.Add(this.labelTotalIS);
-            this.tabPage1.Controls.Add(this.labelEnchantEvent);
-            this.tabPage1.Controls.Add(this.textBoxEnchantEvent);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.comboBoxToSC);
-            this.tabPage1.Controls.Add(this.comboBoxFromSC);
-            this.tabPage1.Controls.Add(this.labelToSC);
-            this.tabPage1.Controls.Add(this.labelFromSC);
-            this.tabPage1.Controls.Add(this.doSoulcraft);
-            this.tabPage1.Controls.Add(this.doEnchanting);
-            this.tabPage1.Controls.Add(this.labelRisNeeded);
-            this.tabPage1.Controls.Add(this.labelIsNeeded);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.chanceIncrease);
-            this.tabPage1.Controls.Add(this.labelChanceIncrease);
-            this.tabPage1.Controls.Add(this.hasEWBuff);
-            this.tabPage1.Controls.Add(this.labelEmporiaBuff);
-            this.tabPage1.Controls.Add(this.toELvl);
-            this.tabPage1.Controls.Add(this.labelTo);
-            this.tabPage1.Controls.Add(this.fromELvl);
-            this.tabPage1.Controls.Add(this.labelFrom);
-            this.tabPage1.Controls.Add(this.weapOrArmor);
-            this.tabPage1.Controls.Add(this.labelItemToEnchant);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(345, 238);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Crafting";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageCrafting.Controls.Add(this.labelTotalRIS);
+            this.tabPageCrafting.Controls.Add(this.labelTotalIS);
+            this.tabPageCrafting.Controls.Add(this.labelSuccessProbability2);
+            this.tabPageCrafting.Controls.Add(this.textBoxSuccessProbability);
+            this.tabPageCrafting.Controls.Add(this.labelSuccessProbability);
+            this.tabPageCrafting.Controls.Add(this.buttonResetTotal);
+            this.tabPageCrafting.Controls.Add(this.numberOfItems);
+            this.tabPageCrafting.Controls.Add(this.labelNumOfItems);
+            this.tabPageCrafting.Controls.Add(this.labelIsSoulNeeded);
+            this.tabPageCrafting.Controls.Add(this.label6);
+            this.tabPageCrafting.Controls.Add(this.labelOutTotalRIS);
+            this.tabPageCrafting.Controls.Add(this.labelOutTotalIS);
+            this.tabPageCrafting.Controls.Add(this.labelEnchantEvent);
+            this.tabPageCrafting.Controls.Add(this.textBoxEnchantEvent);
+            this.tabPageCrafting.Controls.Add(this.labelChanceIncrease2);
+            this.tabPageCrafting.Controls.Add(this.comboBoxToSC);
+            this.tabPageCrafting.Controls.Add(this.comboBoxFromSC);
+            this.tabPageCrafting.Controls.Add(this.labelToSC);
+            this.tabPageCrafting.Controls.Add(this.labelFromSC);
+            this.tabPageCrafting.Controls.Add(this.checkBoxDoSoulcraft);
+            this.tabPageCrafting.Controls.Add(this.checkBoxDoEnchanting);
+            this.tabPageCrafting.Controls.Add(this.labelRisNeeded);
+            this.tabPageCrafting.Controls.Add(this.labelIsNeeded);
+            this.tabPageCrafting.Controls.Add(this.label9);
+            this.tabPageCrafting.Controls.Add(this.label8);
+            this.tabPageCrafting.Controls.Add(this.buttonCraft);
+            this.tabPageCrafting.Controls.Add(this.textBoxChanceIncrease);
+            this.tabPageCrafting.Controls.Add(this.labelChanceIncrease);
+            this.tabPageCrafting.Controls.Add(this.checkBoxhasEWBuff);
+            this.tabPageCrafting.Controls.Add(this.labelEmporiaBuff);
+            this.tabPageCrafting.Controls.Add(this.toELvl);
+            this.tabPageCrafting.Controls.Add(this.labelTo);
+            this.tabPageCrafting.Controls.Add(this.fromELvl);
+            this.tabPageCrafting.Controls.Add(this.labelFrom);
+            this.tabPageCrafting.Controls.Add(this.comboBoxWeapOrArmor);
+            this.tabPageCrafting.Controls.Add(this.labelItemToEnchant);
+            this.tabPageCrafting.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCrafting.Name = "tabPageCrafting";
+            this.tabPageCrafting.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCrafting.Size = new System.Drawing.Size(343, 270);
+            this.tabPageCrafting.TabIndex = 0;
+            this.tabPageCrafting.Text = "Crafting";
+            this.tabPageCrafting.UseVisualStyleBackColor = true;
+            // 
+            // labelTotalRIS
+            // 
+            this.labelTotalRIS.AutoSize = true;
+            this.labelTotalRIS.Location = new System.Drawing.Point(197, 219);
+            this.labelTotalRIS.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.labelTotalRIS.Name = "labelTotalRIS";
+            this.labelTotalRIS.Size = new System.Drawing.Size(52, 13);
+            this.labelTotalRIS.TabIndex = 50;
+            this.labelTotalRIS.Text = "Total RIS";
+            // 
+            // labelTotalIS
+            // 
+            this.labelTotalIS.AutoSize = true;
+            this.labelTotalIS.Location = new System.Drawing.Point(197, 196);
+            this.labelTotalIS.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.labelTotalIS.Name = "labelTotalIS";
+            this.labelTotalIS.Size = new System.Drawing.Size(47, 13);
+            this.labelTotalIS.TabIndex = 49;
+            this.labelTotalIS.Text = "Total IS:";
+            // 
+            // labelSuccessProbability2
+            // 
+            this.labelSuccessProbability2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSuccessProbability2.AutoSize = true;
+            this.labelSuccessProbability2.Location = new System.Drawing.Point(238, 173);
+            this.labelSuccessProbability2.Name = "labelSuccessProbability2";
+            this.labelSuccessProbability2.Size = new System.Drawing.Size(15, 13);
+            this.labelSuccessProbability2.TabIndex = 42;
+            this.labelSuccessProbability2.Text = "%";
+            // 
+            // textBoxSuccessProbability
+            // 
+            this.textBoxSuccessProbability.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSuccessProbability.Location = new System.Drawing.Point(197, 170);
+            this.textBoxSuccessProbability.Name = "textBoxSuccessProbability";
+            this.textBoxSuccessProbability.Size = new System.Drawing.Size(41, 20);
+            this.textBoxSuccessProbability.TabIndex = 41;
+            this.textBoxSuccessProbability.Text = "75";
+            this.textBoxSuccessProbability.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // labelSuccessProbability
+            // 
+            this.labelSuccessProbability.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSuccessProbability.AutoSize = true;
+            this.labelSuccessProbability.Location = new System.Drawing.Point(90, 173);
+            this.labelSuccessProbability.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.labelSuccessProbability.Name = "labelSuccessProbability";
+            this.labelSuccessProbability.Size = new System.Drawing.Size(101, 13);
+            this.labelSuccessProbability.TabIndex = 40;
+            this.labelSuccessProbability.Text = "Success probability:";
+            // 
+            // buttonResetTotal
+            // 
+            this.buttonResetTotal.Location = new System.Drawing.Point(200, 240);
+            this.buttonResetTotal.Name = "buttonResetTotal";
+            this.buttonResetTotal.Size = new System.Drawing.Size(135, 23);
+            this.buttonResetTotal.TabIndex = 39;
+            this.buttonResetTotal.Text = "Reset Total";
+            this.buttonResetTotal.UseVisualStyleBackColor = true;
+            this.buttonResetTotal.Click += new System.EventHandler(this.buttonResetTotal_Click);
             // 
             // numberOfItems
             // 
@@ -159,27 +229,28 @@
             0,
             0});
             this.numberOfItems.Name = "numberOfItems";
-            this.numberOfItems.Size = new System.Drawing.Size(41, 20);
+            this.numberOfItems.Size = new System.Drawing.Size(40, 20);
             this.numberOfItems.TabIndex = 38;
+            this.numberOfItems.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numberOfItems.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // label7
+            // labelNumOfItems
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(170, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 37;
-            this.label7.Text = "# of Items:";
+            this.labelNumOfItems.AutoSize = true;
+            this.labelNumOfItems.Location = new System.Drawing.Point(170, 31);
+            this.labelNumOfItems.Name = "labelNumOfItems";
+            this.labelNumOfItems.Size = new System.Drawing.Size(57, 13);
+            this.labelNumOfItems.TabIndex = 37;
+            this.labelNumOfItems.Text = "# of Items:";
             // 
             // labelIsSoulNeeded
             // 
             this.labelIsSoulNeeded.AutoSize = true;
-            this.labelIsSoulNeeded.Location = new System.Drawing.Point(123, 219);
+            this.labelIsSoulNeeded.Location = new System.Drawing.Point(131, 242);
             this.labelIsSoulNeeded.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelIsSoulNeeded.Name = "labelIsSoulNeeded";
             this.labelIsSoulNeeded.Size = new System.Drawing.Size(13, 13);
@@ -189,7 +260,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 219);
+            this.label6.Location = new System.Drawing.Point(6, 242);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(110, 13);
@@ -199,38 +270,20 @@
             // labelOutTotalRIS
             // 
             this.labelOutTotalRIS.AutoSize = true;
-            this.labelOutTotalRIS.Location = new System.Drawing.Point(282, 196);
+            this.labelOutTotalRIS.Location = new System.Drawing.Point(252, 219);
             this.labelOutTotalRIS.Name = "labelOutTotalRIS";
             this.labelOutTotalRIS.Size = new System.Drawing.Size(13, 13);
             this.labelOutTotalRIS.TabIndex = 31;
             this.labelOutTotalRIS.Text = "0";
             // 
-            // labelTotalRIS
-            // 
-            this.labelTotalRIS.AutoSize = true;
-            this.labelTotalRIS.Location = new System.Drawing.Point(170, 196);
-            this.labelTotalRIS.Name = "labelTotalRIS";
-            this.labelTotalRIS.Size = new System.Drawing.Size(91, 13);
-            this.labelTotalRIS.TabIndex = 30;
-            this.labelTotalRIS.Text = "Total RIS needed";
-            // 
             // labelOutTotalIS
             // 
             this.labelOutTotalIS.AutoSize = true;
-            this.labelOutTotalIS.Location = new System.Drawing.Point(282, 173);
+            this.labelOutTotalIS.Location = new System.Drawing.Point(252, 196);
             this.labelOutTotalIS.Name = "labelOutTotalIS";
             this.labelOutTotalIS.Size = new System.Drawing.Size(13, 13);
             this.labelOutTotalIS.TabIndex = 29;
             this.labelOutTotalIS.Text = "0";
-            // 
-            // labelTotalIS
-            // 
-            this.labelTotalIS.AutoSize = true;
-            this.labelTotalIS.Location = new System.Drawing.Point(170, 173);
-            this.labelTotalIS.Name = "labelTotalIS";
-            this.labelTotalIS.Size = new System.Drawing.Size(86, 13);
-            this.labelTotalIS.TabIndex = 28;
-            this.labelTotalIS.Text = "Total IS needed:";
             // 
             // labelEnchantEvent
             // 
@@ -245,17 +298,19 @@
             // 
             this.textBoxEnchantEvent.Location = new System.Drawing.Point(254, 5);
             this.textBoxEnchantEvent.Name = "textBoxEnchantEvent";
-            this.textBoxEnchantEvent.Size = new System.Drawing.Size(41, 20);
+            this.textBoxEnchantEvent.Size = new System.Drawing.Size(40, 20);
             this.textBoxEnchantEvent.TabIndex = 25;
+            this.textBoxEnchantEvent.Text = "0";
+            this.textBoxEnchantEvent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label1
+            // labelChanceIncrease2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(144, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(15, 13);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "%";
+            this.labelChanceIncrease2.AutoSize = true;
+            this.labelChanceIncrease2.Location = new System.Drawing.Point(144, 8);
+            this.labelChanceIncrease2.Name = "labelChanceIncrease2";
+            this.labelChanceIncrease2.Size = new System.Drawing.Size(15, 13);
+            this.labelChanceIncrease2.TabIndex = 23;
+            this.labelChanceIncrease2.Text = "%";
             // 
             // comboBoxToSC
             // 
@@ -274,6 +329,7 @@
             this.comboBoxToSC.Name = "comboBoxToSC";
             this.comboBoxToSC.Size = new System.Drawing.Size(83, 21);
             this.comboBoxToSC.TabIndex = 22;
+            this.comboBoxToSC.Text = "Legend";
             // 
             // comboBoxFromSC
             // 
@@ -287,6 +343,7 @@
             this.comboBoxFromSC.Name = "comboBoxFromSC";
             this.comboBoxFromSC.Size = new System.Drawing.Size(83, 21);
             this.comboBoxFromSC.TabIndex = 21;
+            this.comboBoxFromSC.Text = "Advanced";
             // 
             // labelToSC
             // 
@@ -308,37 +365,37 @@
             this.labelFromSC.TabIndex = 19;
             this.labelFromSC.Text = "From Soulcraft:";
             // 
-            // doSoulcraft
+            // checkBoxDoSoulcraft
             // 
-            this.doSoulcraft.AutoSize = true;
-            this.doSoulcraft.Checked = true;
-            this.doSoulcraft.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.doSoulcraft.Location = new System.Drawing.Point(173, 52);
-            this.doSoulcraft.Name = "doSoulcraft";
-            this.doSoulcraft.Size = new System.Drawing.Size(82, 17);
-            this.doSoulcraft.TabIndex = 18;
-            this.doSoulcraft.Text = "Soulcrafting";
-            this.doSoulcraft.UseVisualStyleBackColor = true;
-            this.doSoulcraft.CheckedChanged += new System.EventHandler(this.doSoulcraft_CheckedChanged);
+            this.checkBoxDoSoulcraft.AutoSize = true;
+            this.checkBoxDoSoulcraft.Checked = true;
+            this.checkBoxDoSoulcraft.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDoSoulcraft.Location = new System.Drawing.Point(173, 52);
+            this.checkBoxDoSoulcraft.Name = "checkBoxDoSoulcraft";
+            this.checkBoxDoSoulcraft.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxDoSoulcraft.TabIndex = 18;
+            this.checkBoxDoSoulcraft.Text = "Soulcrafting";
+            this.checkBoxDoSoulcraft.UseVisualStyleBackColor = true;
+            this.checkBoxDoSoulcraft.CheckedChanged += new System.EventHandler(this.doSoulcraft_CheckedChanged);
             // 
-            // doEnchanting
+            // checkBoxDoEnchanting
             // 
-            this.doEnchanting.AutoSize = true;
-            this.doEnchanting.Checked = true;
-            this.doEnchanting.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.doEnchanting.Location = new System.Drawing.Point(9, 52);
-            this.doEnchanting.Name = "doEnchanting";
-            this.doEnchanting.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.doEnchanting.Size = new System.Drawing.Size(80, 17);
-            this.doEnchanting.TabIndex = 17;
-            this.doEnchanting.Text = "Enchanting";
-            this.doEnchanting.UseVisualStyleBackColor = true;
-            this.doEnchanting.CheckedChanged += new System.EventHandler(this.doEnchanting_CheckedChanged);
+            this.checkBoxDoEnchanting.AutoSize = true;
+            this.checkBoxDoEnchanting.Checked = true;
+            this.checkBoxDoEnchanting.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDoEnchanting.Location = new System.Drawing.Point(9, 52);
+            this.checkBoxDoEnchanting.Name = "checkBoxDoEnchanting";
+            this.checkBoxDoEnchanting.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBoxDoEnchanting.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxDoEnchanting.TabIndex = 17;
+            this.checkBoxDoEnchanting.Text = "Enchanting";
+            this.checkBoxDoEnchanting.UseVisualStyleBackColor = true;
+            this.checkBoxDoEnchanting.CheckedChanged += new System.EventHandler(this.doEnchanting_CheckedChanged);
             // 
             // labelRisNeeded
             // 
             this.labelRisNeeded.AutoSize = true;
-            this.labelRisNeeded.Location = new System.Drawing.Point(123, 196);
+            this.labelRisNeeded.Location = new System.Drawing.Point(131, 219);
             this.labelRisNeeded.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelRisNeeded.Name = "labelRisNeeded";
             this.labelRisNeeded.Size = new System.Drawing.Size(13, 13);
@@ -348,7 +405,7 @@
             // labelIsNeeded
             // 
             this.labelIsNeeded.AutoSize = true;
-            this.labelIsNeeded.Location = new System.Drawing.Point(123, 173);
+            this.labelIsNeeded.Location = new System.Drawing.Point(131, 196);
             this.labelIsNeeded.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.labelIsNeeded.Name = "labelIsNeeded";
             this.labelIsNeeded.Size = new System.Drawing.Size(13, 13);
@@ -358,7 +415,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 196);
+            this.label9.Location = new System.Drawing.Point(6, 219);
             this.label9.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 13);
@@ -368,31 +425,33 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 173);
+            this.label8.Location = new System.Drawing.Point(6, 196);
             this.label8.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "IS needed:";
             // 
-            // button1
+            // buttonCraft
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.buttonCraft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(12, 142);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(325, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Craft";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonCraft.Location = new System.Drawing.Point(10, 142);
+            this.buttonCraft.Name = "buttonCraft";
+            this.buttonCraft.Size = new System.Drawing.Size(323, 23);
+            this.buttonCraft.TabIndex = 12;
+            this.buttonCraft.Text = "Craft";
+            this.buttonCraft.UseVisualStyleBackColor = true;
+            this.buttonCraft.Click += new System.EventHandler(this.button1_Click);
             // 
-            // chanceIncrease
+            // textBoxChanceIncrease
             // 
-            this.chanceIncrease.Location = new System.Drawing.Point(103, 5);
-            this.chanceIncrease.Name = "chanceIncrease";
-            this.chanceIncrease.Size = new System.Drawing.Size(41, 20);
-            this.chanceIncrease.TabIndex = 11;
+            this.textBoxChanceIncrease.Location = new System.Drawing.Point(103, 5);
+            this.textBoxChanceIncrease.Name = "textBoxChanceIncrease";
+            this.textBoxChanceIncrease.Size = new System.Drawing.Size(41, 20);
+            this.textBoxChanceIncrease.TabIndex = 11;
+            this.textBoxChanceIncrease.Text = "0";
+            this.textBoxChanceIncrease.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labelChanceIncrease
             // 
@@ -404,14 +463,14 @@
             this.labelChanceIncrease.TabIndex = 10;
             this.labelChanceIncrease.Text = "Chance Increase:";
             // 
-            // hasEWBuff
+            // checkBoxhasEWBuff
             // 
-            this.hasEWBuff.AutoSize = true;
-            this.hasEWBuff.Location = new System.Drawing.Point(104, 30);
-            this.hasEWBuff.Name = "hasEWBuff";
-            this.hasEWBuff.Size = new System.Drawing.Size(15, 14);
-            this.hasEWBuff.TabIndex = 9;
-            this.hasEWBuff.UseVisualStyleBackColor = true;
+            this.checkBoxhasEWBuff.AutoSize = true;
+            this.checkBoxhasEWBuff.Location = new System.Drawing.Point(104, 30);
+            this.checkBoxhasEWBuff.Name = "checkBoxhasEWBuff";
+            this.checkBoxhasEWBuff.Size = new System.Drawing.Size(15, 14);
+            this.checkBoxhasEWBuff.TabIndex = 9;
+            this.checkBoxhasEWBuff.UseVisualStyleBackColor = true;
             // 
             // labelEmporiaBuff
             // 
@@ -439,8 +498,9 @@
             this.toELvl.Name = "toELvl";
             this.toELvl.Size = new System.Drawing.Size(40, 20);
             this.toELvl.TabIndex = 5;
+            this.toELvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.toELvl.Value = new decimal(new int[] {
-            1,
+            20,
             0,
             0,
             0});
@@ -466,6 +526,12 @@
             this.fromELvl.Name = "fromELvl";
             this.fromELvl.Size = new System.Drawing.Size(40, 20);
             this.fromELvl.TabIndex = 3;
+            this.fromELvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.fromELvl.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // labelFrom
             // 
@@ -477,16 +543,17 @@
             this.labelFrom.TabIndex = 2;
             this.labelFrom.Text = "From:";
             // 
-            // weapOrArmor
+            // comboBoxWeapOrArmor
             // 
-            this.weapOrArmor.FormattingEnabled = true;
-            this.weapOrArmor.Items.AddRange(new object[] {
+            this.comboBoxWeapOrArmor.FormattingEnabled = true;
+            this.comboBoxWeapOrArmor.Items.AddRange(new object[] {
             "Weapon",
             "Armor"});
-            this.weapOrArmor.Location = new System.Drawing.Point(103, 69);
-            this.weapOrArmor.Name = "weapOrArmor";
-            this.weapOrArmor.Size = new System.Drawing.Size(64, 21);
-            this.weapOrArmor.TabIndex = 1;
+            this.comboBoxWeapOrArmor.Location = new System.Drawing.Point(103, 69);
+            this.comboBoxWeapOrArmor.Name = "comboBoxWeapOrArmor";
+            this.comboBoxWeapOrArmor.Size = new System.Drawing.Size(64, 21);
+            this.comboBoxWeapOrArmor.TabIndex = 1;
+            this.comboBoxWeapOrArmor.Text = "Weapon";
             // 
             // labelItemToEnchant
             // 
@@ -497,41 +564,41 @@
             this.labelItemToEnchant.TabIndex = 0;
             this.labelItemToEnchant.Text = "Item to enchant: \r\n";
             // 
-            // tabPage2
+            // tabPageProbabilities
             // 
-            this.tabPage2.Controls.Add(this.label26);
-            this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.label20);
-            this.tabPage2.Controls.Add(this.label21);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.label16);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.ForeColor = System.Drawing.Color.Black;
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(345, 238);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Probabilities";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageProbabilities.Controls.Add(this.label26);
+            this.tabPageProbabilities.Controls.Add(this.label25);
+            this.tabPageProbabilities.Controls.Add(this.label24);
+            this.tabPageProbabilities.Controls.Add(this.label23);
+            this.tabPageProbabilities.Controls.Add(this.label17);
+            this.tabPageProbabilities.Controls.Add(this.label18);
+            this.tabPageProbabilities.Controls.Add(this.label19);
+            this.tabPageProbabilities.Controls.Add(this.label20);
+            this.tabPageProbabilities.Controls.Add(this.label21);
+            this.tabPageProbabilities.Controls.Add(this.label22);
+            this.tabPageProbabilities.Controls.Add(this.label16);
+            this.tabPageProbabilities.Controls.Add(this.label15);
+            this.tabPageProbabilities.Controls.Add(this.label14);
+            this.tabPageProbabilities.Controls.Add(this.label13);
+            this.tabPageProbabilities.Controls.Add(this.label12);
+            this.tabPageProbabilities.Controls.Add(this.label11);
+            this.tabPageProbabilities.Controls.Add(this.label10);
+            this.tabPageProbabilities.Controls.Add(this.label5);
+            this.tabPageProbabilities.Controls.Add(this.label4);
+            this.tabPageProbabilities.ForeColor = System.Drawing.Color.Black;
+            this.tabPageProbabilities.Location = new System.Drawing.Point(4, 22);
+            this.tabPageProbabilities.Name = "tabPageProbabilities";
+            this.tabPageProbabilities.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageProbabilities.Size = new System.Drawing.Size(343, 270);
+            this.tabPageProbabilities.TabIndex = 1;
+            this.tabPageProbabilities.Text = "Probabilities";
+            this.tabPageProbabilities.UseVisualStyleBackColor = true;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(304, 47);
+            this.label26.Location = new System.Drawing.Point(112, 245);
             this.label26.Margin = new System.Windows.Forms.Padding(0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(40, 9);
@@ -542,7 +609,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(304, 36);
+            this.label25.Location = new System.Drawing.Point(112, 234);
             this.label25.Margin = new System.Windows.Forms.Padding(0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(40, 9);
@@ -553,7 +620,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(304, 25);
+            this.label24.Location = new System.Drawing.Point(112, 223);
             this.label24.Margin = new System.Windows.Forms.Padding(0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(40, 9);
@@ -564,7 +631,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(304, 14);
+            this.label23.Location = new System.Drawing.Point(112, 212);
             this.label23.Margin = new System.Windows.Forms.Padding(0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(40, 9);
@@ -576,7 +643,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(31)))), ((int)(((byte)(200)))));
-            this.label17.Location = new System.Drawing.Point(259, 47);
+            this.label17.Location = new System.Drawing.Point(67, 245);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(35, 9);
@@ -587,7 +654,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(240, 47);
+            this.label18.Location = new System.Drawing.Point(48, 245);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(15, 9);
@@ -599,7 +666,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(70)))), ((int)(((byte)(1)))));
-            this.label19.Location = new System.Drawing.Point(195, 47);
+            this.label19.Location = new System.Drawing.Point(3, 245);
             this.label19.Margin = new System.Windows.Forms.Padding(0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(45, 9);
@@ -611,7 +678,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(70)))), ((int)(((byte)(1)))));
-            this.label20.Location = new System.Drawing.Point(259, 36);
+            this.label20.Location = new System.Drawing.Point(67, 234);
             this.label20.Margin = new System.Windows.Forms.Padding(0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(45, 9);
@@ -622,7 +689,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(240, 36);
+            this.label21.Location = new System.Drawing.Point(48, 234);
             this.label21.Margin = new System.Windows.Forms.Padding(0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(15, 9);
@@ -634,7 +701,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(165)))));
-            this.label22.Location = new System.Drawing.Point(195, 36);
+            this.label22.Location = new System.Drawing.Point(3, 234);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(40, 9);
@@ -646,7 +713,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(165)))));
-            this.label16.Location = new System.Drawing.Point(259, 25);
+            this.label16.Location = new System.Drawing.Point(67, 223);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(40, 9);
@@ -657,7 +724,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(240, 25);
+            this.label15.Location = new System.Drawing.Point(48, 223);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 9);
@@ -669,7 +736,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(143)))), ((int)(((byte)(22)))));
-            this.label14.Location = new System.Drawing.Point(195, 25);
+            this.label14.Location = new System.Drawing.Point(3, 223);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(45, 9);
@@ -681,7 +748,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(143)))), ((int)(((byte)(22)))));
-            this.label13.Location = new System.Drawing.Point(259, 14);
+            this.label13.Location = new System.Drawing.Point(67, 212);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 9);
@@ -692,7 +759,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(240, 14);
+            this.label12.Location = new System.Drawing.Point(48, 212);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(15, 9);
@@ -703,7 +770,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(195, 14);
+            this.label11.Location = new System.Drawing.Point(3, 212);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 9);
@@ -714,7 +781,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(195, 3);
+            this.label10.Location = new System.Drawing.Point(3, 201);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 9);
             this.label10.TabIndex = 10;
@@ -740,33 +807,23 @@
             this.label4.TabIndex = 8;
             this.label4.Text = resources.GetString("label4.Text");
             // 
-            // buttonResetTotal
-            // 
-            this.buttonResetTotal.Location = new System.Drawing.Point(173, 214);
-            this.buttonResetTotal.Name = "buttonResetTotal";
-            this.buttonResetTotal.Size = new System.Drawing.Size(122, 23);
-            this.buttonResetTotal.TabIndex = 39;
-            this.buttonResetTotal.Text = "Reset Total";
-            this.buttonResetTotal.UseVisualStyleBackColor = true;
-            this.buttonResetTotal.Click += new System.EventHandler(this.buttonResetTotal_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 264);
+            this.ClientSize = new System.Drawing.Size(351, 296);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "DS Enchant/Soulcraft";
             this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabPageCrafting.ResumeLayout(false);
+            this.tabPageCrafting.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toELvl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fromELvl)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPageProbabilities.ResumeLayout(false);
+            this.tabPageProbabilities.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -774,8 +831,8 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage2;
-        public System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPageProbabilities;
+        public System.Windows.Forms.TabPage tabPageCrafting;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -799,36 +856,39 @@
         private System.Windows.Forms.Label labelIsNeeded;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox chanceIncrease;
+        private System.Windows.Forms.Button buttonCraft;
+        private System.Windows.Forms.TextBox textBoxChanceIncrease;
         private System.Windows.Forms.Label labelChanceIncrease;
-        private System.Windows.Forms.CheckBox hasEWBuff;
+        private System.Windows.Forms.CheckBox checkBoxhasEWBuff;
         private System.Windows.Forms.Label labelEmporiaBuff;
         private System.Windows.Forms.NumericUpDown toELvl;
         private System.Windows.Forms.Label labelTo;
         private System.Windows.Forms.NumericUpDown fromELvl;
         private System.Windows.Forms.Label labelFrom;
-        private System.Windows.Forms.ComboBox weapOrArmor;
+        private System.Windows.Forms.ComboBox comboBoxWeapOrArmor;
         private System.Windows.Forms.Label labelItemToEnchant;
-        private System.Windows.Forms.CheckBox doSoulcraft;
-        private System.Windows.Forms.CheckBox doEnchanting;
+        private System.Windows.Forms.CheckBox checkBoxDoSoulcraft;
+        private System.Windows.Forms.CheckBox checkBoxDoEnchanting;
         private System.Windows.Forms.ComboBox comboBoxToSC;
         private System.Windows.Forms.ComboBox comboBoxFromSC;
         private System.Windows.Forms.Label labelToSC;
         private System.Windows.Forms.Label labelFromSC;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelChanceIncrease2;
         private System.Windows.Forms.Label labelEnchantEvent;
         private System.Windows.Forms.TextBox textBoxEnchantEvent;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label labelOutTotalIS;
-        private System.Windows.Forms.Label labelTotalIS;
         private System.Windows.Forms.Label labelOutTotalRIS;
-        private System.Windows.Forms.Label labelTotalRIS;
         private System.Windows.Forms.Label labelIsSoulNeeded;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numberOfItems;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNumOfItems;
         private System.Windows.Forms.Button buttonResetTotal;
+        private System.Windows.Forms.Label labelSuccessProbability2;
+        private System.Windows.Forms.TextBox textBoxSuccessProbability;
+        private System.Windows.Forms.Label labelSuccessProbability;
+        private System.Windows.Forms.Label labelTotalRIS;
+        private System.Windows.Forms.Label labelTotalIS;
     }
 }
 
