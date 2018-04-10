@@ -47,7 +47,7 @@ namespace Soulcraft_Enchant
             toolTip1.SetToolTip(labelNumOfItems, "Number of items to enchant");
             toolTip1.SetToolTip(numberOfItems, "Number of items to enchant");
             toolTip1.SetToolTip(fromELvl, "The level the item currently has and IS/RIS will be used");
-            toolTip1.SetToolTip(toELvl, "The level the item needs have after enchanting");
+            toolTip1.SetToolTip(toELvl, "The level the item has after enchanting");
             toolTip1.SetToolTip(labelSuccessProbability, "The probability to have at least 1 success");
             toolTip1.SetToolTip(labelSuccessProbability2, "The probability to have at least 1 success");
             toolTip1.SetToolTip(textBoxSuccessProbability, "The probability to have at least 1 success");
@@ -56,12 +56,23 @@ namespace Soulcraft_Enchant
         public double Enchant(bool isWeap, int from, int to, double chance, double percentage, double success)
         {
             double expected = 0;
-            for (int i = from; i < to; i++)
+            if (success > 0 && success < 1)
             {
-                expected += isWeap ? GetExpected(pW, i, chance, percentage, success) : GetExpected(pA, i, chance, percentage, success);
+                for (int i = from; i < to; i++)
+                {
+                    expected += isWeap ? GetExpected(pW, i, chance, percentage, success) : GetExpected(pA, i, chance, percentage, success);
+                }
+            }
+            else
+            {
+                for (int i = from; i < to; i++)
+                {
+                    expected += isWeap ? 1 / GetChance(pW, i, chance, percentage) : 1 / GetChance(pA, i, chance, percentage);
+                }
             }
             return expected;
         }
+
 
         public void EnchantCall(out double isNeed, out double risNeed, bool isWeap = true, int from = 0, int to = 20, double chance = 0, double percentage = 0, double success = 0)
         {
@@ -92,9 +103,19 @@ namespace Soulcraft_Enchant
         public double Soulcraft(int from, int to, double chance, double percentage, double success)
         {
             double expected = 0;
-            for (int i = from; i < to; i++)
+            if (success > 0 && success < 1)
             {
-                expected += GetExpected(pS, i, chance, percentage, success);
+                for (int i = from; i < to; i++)
+                {
+                    expected += GetExpected(pS, i, chance, percentage, success);
+                }
+            }
+            else
+            {
+                for (int i = from; i < to; i++)
+                {
+                    expected += 1 / GetChance(pS, i, chance, percentage);
+                }
             }
             return expected;
         }
@@ -144,12 +165,13 @@ namespace Soulcraft_Enchant
 
         public double GetExpected(double[] arr, int index, double chance, double percentage, double success)
         {
-            return (Math.Log(1 - success) / Math.Log(1 - GetChance(arr, index, chance, percentage))) + 1;
+            return (Math.Log(1 - success) / Math.Log(1 - GetChance(arr, index, chance, percentage)));
         }
 
         public double GetChance(double[] arr, int index, double chance, double percentage)
         {
-            return (chance + arr[index] * (percentage + 1)) > 1 ? 1 : (chance + arr[index] * (percentage + 1));
+            double successrate = (chance + arr[index] * (percentage + 1));
+            return successrate > 1 ? 1 : successrate;
         }
 
         private void button1_Click(object sender, EventArgs e)
