@@ -43,15 +43,15 @@ There are two different ways to calculate the expected usage of insurance scroll
 ## How to use the program:
 Inputs:
 
-Label | Values | Description
---- | --- | ---
-Chance Increase | 0 - 100 | Probability added on to the base probability
-Enchant event | ≥ 0 | Factor the base probability is multiplied by
-Item to enchant | Weapon, Armor | Weapons and armor have different base probabilities
-From | 0 - 19 | Enchantment level the item has and/or IS/RIS should be used from
-To | 1 - 20 | Enchantment level the item should have
-From Soulcraft | Normal to Artifact | Soulcraft level the item has and/or IS/RIS should be used from
-To Soulcraft | Advanced to Legend | Soulcraft level the item should have
-Success probability | 0 - 100 | Probability to succeed at least once in a single enchantment. Value of `0` calculates the **average** usage of IS/RIS
+Label               | Values             | Description
+------------------- | ------------------ | ---
+Chance Increase     | 0 - 100            | Probability added on to the base probability
+Enchant event       | ≥ 0                | Factor the base probability is multiplied by
+Item to enchant     | Weapon, Armor      | Weapons and armor have different base probabilities
+From                | 0 - 19             | Enchantment level the item has and/or IS/RIS should be used from
+To                  | 1 - 20             | Enchantment level the item should have
+From Soulcraft      | Normal to Artifact | Soulcraft level the item has and/or IS/RIS should be used from
+To Soulcraft        | Advanced to Legend | Soulcraft level the item should have
+Success probability | 0 - 100            | Probability to succeed at least once in a single enchantment. Value of `0` calculates the **average** usage of IS/RIS
 
 After all the inputs are set click on the `Craft` button to get the expected number of IS/RIS.
