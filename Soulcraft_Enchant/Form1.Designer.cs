@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageCrafting = new System.Windows.Forms.TabPage();
+            this.buttonViewSuccessrates = new System.Windows.Forms.Button();
             this.labelTotalRIS = new System.Windows.Forms.Label();
             this.labelTotalIS = new System.Windows.Forms.Label();
             this.labelSuccessProbability2 = new System.Windows.Forms.Label();
@@ -69,10 +70,10 @@
             this.comboBoxWeapOrArmor = new System.Windows.Forms.ComboBox();
             this.labelItemToEnchant = new System.Windows.Forms.Label();
             this.tabPageProbabilities = new System.Windows.Forms.TabPage();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.labelSCProbs = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelArmorProbs = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -84,10 +85,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelNormalFrom = new System.Windows.Forms.Label();
+            this.labelSoulcraft = new System.Windows.Forms.Label();
+            this.labelWeaponProbs = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl.SuspendLayout();
             this.tabPageCrafting.SuspendLayout();
@@ -107,11 +108,12 @@
             this.tabControl.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(351, 296);
+            this.tabControl.Size = new System.Drawing.Size(351, 324);
             this.tabControl.TabIndex = 0;
             // 
             // tabPageCrafting
             // 
+            this.tabPageCrafting.Controls.Add(this.buttonViewSuccessrates);
             this.tabPageCrafting.Controls.Add(this.labelTotalRIS);
             this.tabPageCrafting.Controls.Add(this.labelTotalIS);
             this.tabPageCrafting.Controls.Add(this.labelSuccessProbability2);
@@ -151,10 +153,22 @@
             this.tabPageCrafting.Location = new System.Drawing.Point(4, 22);
             this.tabPageCrafting.Name = "tabPageCrafting";
             this.tabPageCrafting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCrafting.Size = new System.Drawing.Size(343, 270);
+            this.tabPageCrafting.Size = new System.Drawing.Size(343, 298);
             this.tabPageCrafting.TabIndex = 0;
             this.tabPageCrafting.Text = "Crafting";
             this.tabPageCrafting.UseVisualStyleBackColor = true;
+            // 
+            // buttonViewSuccessrates
+            // 
+            this.buttonViewSuccessrates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonViewSuccessrates.Location = new System.Drawing.Point(4, 273);
+            this.buttonViewSuccessrates.Name = "buttonViewSuccessrates";
+            this.buttonViewSuccessrates.Size = new System.Drawing.Size(334, 23);
+            this.buttonViewSuccessrates.TabIndex = 51;
+            this.buttonViewSuccessrates.Text = "View Successrates";
+            this.buttonViewSuccessrates.UseVisualStyleBackColor = true;
+            this.buttonViewSuccessrates.Click += new System.EventHandler(this.buttonViewSuccessrates_Click);
             // 
             // labelTotalRIS
             // 
@@ -441,9 +455,9 @@
             // 
             this.buttonCraft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCraft.Location = new System.Drawing.Point(10, 142);
+            this.buttonCraft.Location = new System.Drawing.Point(4, 142);
             this.buttonCraft.Name = "buttonCraft";
-            this.buttonCraft.Size = new System.Drawing.Size(323, 23);
+            this.buttonCraft.Size = new System.Drawing.Size(334, 23);
             this.buttonCraft.TabIndex = 12;
             this.buttonCraft.Text = "Craft";
             this.buttonCraft.UseVisualStyleBackColor = true;
@@ -571,10 +585,10 @@
             // 
             // tabPageProbabilities
             // 
-            this.tabPageProbabilities.Controls.Add(this.label26);
-            this.tabPageProbabilities.Controls.Add(this.label25);
-            this.tabPageProbabilities.Controls.Add(this.label24);
-            this.tabPageProbabilities.Controls.Add(this.label23);
+            this.tabPageProbabilities.Controls.Add(this.labelSCProbs);
+            this.tabPageProbabilities.Controls.Add(this.label3);
+            this.tabPageProbabilities.Controls.Add(this.labelArmorProbs);
+            this.tabPageProbabilities.Controls.Add(this.label2);
             this.tabPageProbabilities.Controls.Add(this.label17);
             this.tabPageProbabilities.Controls.Add(this.label18);
             this.tabPageProbabilities.Controls.Add(this.label19);
@@ -586,237 +600,245 @@
             this.tabPageProbabilities.Controls.Add(this.label14);
             this.tabPageProbabilities.Controls.Add(this.label13);
             this.tabPageProbabilities.Controls.Add(this.label12);
-            this.tabPageProbabilities.Controls.Add(this.label11);
-            this.tabPageProbabilities.Controls.Add(this.label10);
-            this.tabPageProbabilities.Controls.Add(this.label5);
-            this.tabPageProbabilities.Controls.Add(this.label4);
+            this.tabPageProbabilities.Controls.Add(this.labelNormalFrom);
+            this.tabPageProbabilities.Controls.Add(this.labelSoulcraft);
+            this.tabPageProbabilities.Controls.Add(this.labelWeaponProbs);
+            this.tabPageProbabilities.Controls.Add(this.label99);
             this.tabPageProbabilities.ForeColor = System.Drawing.Color.Black;
             this.tabPageProbabilities.Location = new System.Drawing.Point(4, 22);
             this.tabPageProbabilities.Name = "tabPageProbabilities";
             this.tabPageProbabilities.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProbabilities.Size = new System.Drawing.Size(343, 270);
+            this.tabPageProbabilities.Size = new System.Drawing.Size(343, 298);
             this.tabPageProbabilities.TabIndex = 1;
-            this.tabPageProbabilities.Text = "Probabilities";
+            this.tabPageProbabilities.Text = "Successrates";
             this.tabPageProbabilities.UseVisualStyleBackColor = true;
             // 
-            // label26
+            // labelSCProbs
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(112, 245);
-            this.label26.Margin = new System.Windows.Forms.Padding(0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(40, 9);
-            this.label26.TabIndex = 26;
-            this.label26.Text = ": 2.00%";
+            this.labelSCProbs.AutoSize = true;
+            this.labelSCProbs.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSCProbs.Location = new System.Drawing.Point(156, 254);
+            this.labelSCProbs.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.labelSCProbs.Name = "labelSCProbs";
+            this.labelSCProbs.Size = new System.Drawing.Size(40, 44);
+            this.labelSCProbs.TabIndex = 30;
+            this.labelSCProbs.Text = "6.00%\r\n4.00%\r\n2.00%\r\n2.00%";
+            this.labelSCProbs.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label25
+            // label3
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(112, 234);
-            this.label25.Margin = new System.Windows.Forms.Padding(0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(40, 9);
-            this.label25.TabIndex = 25;
-            this.label25.Text = ": 2.00%";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(144, 254);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(12, 44);
+            this.label3.TabIndex = 29;
+            this.label3.Text = ":\r\n:\r\n:\r\n:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label24
+            // labelArmorProbs
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(112, 223);
-            this.label24.Margin = new System.Windows.Forms.Padding(0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(40, 9);
-            this.label24.TabIndex = 24;
-            this.label24.Text = ": 4.00%";
+            this.labelArmorProbs.AutoSize = true;
+            this.labelArmorProbs.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArmorProbs.Location = new System.Drawing.Point(220, 14);
+            this.labelArmorProbs.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.labelArmorProbs.Name = "labelArmorProbs";
+            this.labelArmorProbs.Size = new System.Drawing.Size(47, 220);
+            this.labelArmorProbs.TabIndex = 28;
+            this.labelArmorProbs.Text = "95.00%\r\n95.00%\r\n95.00%\r\n50.00%\r\n40.00%\r\n30.00%\r\n25.00%\r\n20.00%\r\n18.00%\r\n16.00%\r\n1" +
+    "4.00%\r\n12.00%\r\n10.00%\r\n5.00%\r\n3.00%\r\n0.90%\r\n0.80%\r\n0.40%\r\n0.35%\r\n0.34%";
+            this.labelArmorProbs.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label23
+            // label2
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(112, 212);
-            this.label23.Margin = new System.Windows.Forms.Padding(0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(40, 9);
-            this.label23.TabIndex = 23;
-            this.label23.Text = ": 6.00%";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Console", 8F);
+            this.label2.Location = new System.Drawing.Point(145, 3);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 231);
+            this.label2.TabIndex = 27;
+            this.label2.Text = resources.GetString("label2.Text");
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(31)))), ((int)(((byte)(200)))));
-            this.label17.Location = new System.Drawing.Point(67, 245);
+            this.label17.Location = new System.Drawing.Point(83, 287);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(35, 9);
+            this.label17.Size = new System.Drawing.Size(47, 11);
             this.label17.TabIndex = 22;
             this.label17.Text = "Legend";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(48, 245);
+            this.label18.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(64, 287);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(15, 9);
+            this.label18.Size = new System.Drawing.Size(19, 11);
             this.label18.TabIndex = 21;
             this.label18.Text = "->";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(70)))), ((int)(((byte)(1)))));
-            this.label19.Location = new System.Drawing.Point(3, 245);
+            this.label19.Location = new System.Drawing.Point(3, 287);
             this.label19.Margin = new System.Windows.Forms.Padding(0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(45, 9);
+            this.label19.Size = new System.Drawing.Size(61, 11);
             this.label19.TabIndex = 20;
             this.label19.Text = "Artifact";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(70)))), ((int)(((byte)(1)))));
-            this.label20.Location = new System.Drawing.Point(67, 234);
+            this.label20.Location = new System.Drawing.Point(83, 276);
             this.label20.Margin = new System.Windows.Forms.Padding(0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 9);
+            this.label20.Size = new System.Drawing.Size(61, 11);
             this.label20.TabIndex = 19;
             this.label20.Text = "Artifact";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(48, 234);
+            this.label21.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(64, 276);
             this.label21.Margin = new System.Windows.Forms.Padding(0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(15, 9);
+            this.label21.Size = new System.Drawing.Size(19, 11);
             this.label21.TabIndex = 18;
             this.label21.Text = "->";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(165)))));
-            this.label22.Location = new System.Drawing.Point(3, 234);
+            this.label22.Location = new System.Drawing.Point(3, 276);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(40, 9);
+            this.label22.Size = new System.Drawing.Size(54, 11);
             this.label22.TabIndex = 17;
             this.label22.Text = "Special";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(124)))), ((int)(((byte)(165)))));
-            this.label16.Location = new System.Drawing.Point(67, 223);
+            this.label16.Location = new System.Drawing.Point(83, 265);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 9);
+            this.label16.Size = new System.Drawing.Size(54, 11);
             this.label16.TabIndex = 16;
             this.label16.Text = "Special";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(48, 223);
+            this.label15.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(64, 265);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 9);
+            this.label15.Size = new System.Drawing.Size(19, 11);
             this.label15.TabIndex = 15;
             this.label15.Text = "->";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(143)))), ((int)(((byte)(22)))));
-            this.label14.Location = new System.Drawing.Point(3, 223);
+            this.label14.Location = new System.Drawing.Point(3, 265);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(45, 9);
+            this.label14.Size = new System.Drawing.Size(61, 11);
             this.label14.TabIndex = 14;
             this.label14.Text = "Advanced";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(143)))), ((int)(((byte)(22)))));
-            this.label13.Location = new System.Drawing.Point(67, 212);
+            this.label13.Location = new System.Drawing.Point(83, 254);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 9);
+            this.label13.Size = new System.Drawing.Size(61, 11);
             this.label13.TabIndex = 13;
             this.label13.Text = "Advanced";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(48, 212);
+            this.label12.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(64, 254);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(15, 9);
+            this.label12.Size = new System.Drawing.Size(19, 11);
             this.label12.TabIndex = 12;
             this.label12.Text = "->";
             // 
-            // label11
+            // labelNormalFrom
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 212);
-            this.label11.Margin = new System.Windows.Forms.Padding(0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 9);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Normal";
+            this.labelNormalFrom.AutoSize = true;
+            this.labelNormalFrom.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNormalFrom.Location = new System.Drawing.Point(3, 254);
+            this.labelNormalFrom.Margin = new System.Windows.Forms.Padding(0);
+            this.labelNormalFrom.Name = "labelNormalFrom";
+            this.labelNormalFrom.Size = new System.Drawing.Size(47, 11);
+            this.labelNormalFrom.TabIndex = 11;
+            this.labelNormalFrom.Text = "Normal";
             // 
-            // label10
+            // labelSoulcraft
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 201);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 9);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Soulcraft:";
+            this.labelSoulcraft.AutoSize = true;
+            this.labelSoulcraft.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSoulcraft.Location = new System.Drawing.Point(3, 243);
+            this.labelSoulcraft.Name = "labelSoulcraft";
+            this.labelSoulcraft.Size = new System.Drawing.Size(75, 11);
+            this.labelSoulcraft.TabIndex = 10;
+            this.labelSoulcraft.Text = "Soulcraft:";
             // 
-            // label5
+            // labelWeaponProbs
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(99, 3);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 189);
-            this.label5.TabIndex = 9;
-            this.label5.Text = resources.GetString("label5.Text");
+            this.labelWeaponProbs.AutoSize = true;
+            this.labelWeaponProbs.Font = new System.Drawing.Font("Lucida Console", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWeaponProbs.Location = new System.Drawing.Point(78, 14);
+            this.labelWeaponProbs.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.labelWeaponProbs.Name = "labelWeaponProbs";
+            this.labelWeaponProbs.Size = new System.Drawing.Size(47, 220);
+            this.labelWeaponProbs.TabIndex = 9;
+            this.labelWeaponProbs.Text = "95.00%\r\n95.00%\r\n95.00%\r\n30.00%\r\n27.00%\r\n24.00%\r\n21.00%\r\n18.00%\r\n15.00%\r\n12.00%\r\n9" +
+    ".00%\r\n6.00%\r\n3.00%\r\n3.00%\r\n1.00%\r\n0.70%\r\n0.40%\r\n0.20%\r\n0.18%\r\n0.17%";
+            this.labelWeaponProbs.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label4
+            // label99
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 189);
-            this.label4.TabIndex = 8;
-            this.label4.Text = resources.GetString("label4.Text");
+            this.label99.AutoSize = true;
+            this.label99.Font = new System.Drawing.Font("Lucida Console", 8F);
+            this.label99.Location = new System.Drawing.Point(3, 3);
+            this.label99.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(75, 231);
+            this.label99.TabIndex = 8;
+            this.label99.Text = resources.GetString("label99.Text");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 296);
+            this.ClientSize = new System.Drawing.Size(351, 324);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -843,14 +865,10 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label labelNormalFrom;
+        private System.Windows.Forms.Label labelSoulcraft;
+        private System.Windows.Forms.Label labelWeaponProbs;
+        private System.Windows.Forms.Label label99;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -894,6 +912,11 @@
         private System.Windows.Forms.Label labelSuccessProbability;
         private System.Windows.Forms.Label labelTotalRIS;
         private System.Windows.Forms.Label labelTotalIS;
+        private System.Windows.Forms.Button buttonViewSuccessrates;
+        private System.Windows.Forms.Label labelArmorProbs;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelSCProbs;
+        private System.Windows.Forms.Label label3;
     }
 }
 

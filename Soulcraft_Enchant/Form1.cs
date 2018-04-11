@@ -29,6 +29,9 @@ namespace Soulcraft_Enchant
 
         public Form1()
         {
+            //
+            //Size: 367, 333
+            //
             InitializeComponent();
             //
             // tooltips
@@ -178,7 +181,7 @@ namespace Soulcraft_Enchant
         {
             //http://www.wolframalpha.com/input/?i=solve+for+k,+1-(1-p)%5Ek%3E%3Dm,+0%3Cm%3C1,+0%3Cp%3C1
             double chanceincrease = textBoxChanceIncrease.Text.Equals("") || Double.Parse(textBoxChanceIncrease.Text) <= 0 ? 0 : Double.Parse(textBoxChanceIncrease.Text) / 100;
-            double percentage = (checkBoxhasEWBuff.Checked ? 0.2 : 0) + (textBoxEnchantEvent.Text.Equals("") || Double.Parse(textBoxEnchantEvent.Text) <= 0 ? 0 : Double.Parse(textBoxEnchantEvent.Text) - 1);
+            double percentage = (checkBoxhasEWBuff.Checked ? 0.2 : 0) + (textBoxEnchantEvent.Text.Equals("") || Double.Parse(textBoxEnchantEvent.Text) <= 1 ? 0 : Double.Parse(textBoxEnchantEvent.Text) - 1);
             double success = textBoxSuccessProbability.Text.Equals("") || Double.Parse(textBoxSuccessProbability.Text) <= 0 ? 0 : Double.Parse(textBoxSuccessProbability.Text) / 100;
             double totalISNeeded = 0;
             double totalRISNeeded = 0;
@@ -255,6 +258,33 @@ namespace Soulcraft_Enchant
             labelOutTotalRIS.Text = "0";
             grandTIS = 0;
             grandTRIS = 0;
+        }
+
+        private void buttonViewSuccessrates_Click(object sender, EventArgs e)
+        {
+            string wProbs = "";
+            string aProbs = "";
+            string sProbs = "";
+            double chanceincrease = textBoxChanceIncrease.Text.Equals("") || Double.Parse(textBoxChanceIncrease.Text) <= 0 ? 0 : Double.Parse(textBoxChanceIncrease.Text) / 100;
+            double percentage = (checkBoxhasEWBuff.Checked ? 0.2 : 0) + (textBoxEnchantEvent.Text.Equals("") || Double.Parse(textBoxEnchantEvent.Text) <= 0 ? 0 : Double.Parse(textBoxEnchantEvent.Text) - 1);
+
+            for (int i = 0; i < pW.Length; i++)
+            {
+                // wProbs += String.Format((GetChance(pW, i, chanceincrease, percentage) * 100).ToString(), "{##0.00}") + "%\n";
+                wProbs += String.Format("{0:##0.00}", GetChance(pW, i, chanceincrease, percentage) * 100) + "%\n";
+            }
+            for (int i = 0; i < pA.Length; i++)
+            {
+                aProbs += String.Format("{0:##0.00}", GetChance(pA, i, chanceincrease, percentage) * 100) + "%\n";
+            }
+            for (int i = 0; i < pS.Length; i++)
+            {
+                sProbs += String.Format("{0:##0.00}", GetChance(pS, i, chanceincrease, percentage) * 100) + "%\n";
+            }
+            labelWeaponProbs.Text = wProbs;
+            labelArmorProbs.Text = aProbs;
+            labelSCProbs.Text = sProbs;
+            tabControl.SelectTab(1);
         }
     }
 }

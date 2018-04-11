@@ -117,51 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label5.Text" xml:space="preserve">
+  <data name="label2.Text" xml:space="preserve">
     <value>Armor:
- 0 -&gt;  1 : 95.00%
- 1 -&gt;  2 : 95.00%
- 2 -&gt;  3 : 95.00%
- 3 -&gt;  4 : 50.00%
- 4 -&gt;  5 : 40.00%
- 5 -&gt;  6 : 30.00%
- 6 -&gt;  7 : 25.00%
- 7 -&gt;  8 : 20.00%
- 8 -&gt;  9 : 18.00%
- 9 -&gt; 10 : 16.00%
-10 -&gt; 11 : 14.00%
-11 -&gt; 12 : 12.00%
-12 -&gt; 13 : 10.00%
-13 -&gt; 14 :  5.00%
-14 -&gt; 15 :  3.00%
-15 -&gt; 16 :  0.90%
-16 -&gt; 17 :  0.80%
-17 -&gt; 18 :  0.40%
-18 -&gt; 19 :  0.35%
-19 -&gt; 20 :  0.34%</value>
+ 0 -&gt;  1 :
+ 1 -&gt;  2 :
+ 2 -&gt;  3 :
+ 3 -&gt;  4 :
+ 4 -&gt;  5 :
+ 5 -&gt;  6 :
+ 6 -&gt;  7 :
+ 7 -&gt;  8 :
+ 8 -&gt;  9 :
+ 9 -&gt; 10 :
+10 -&gt; 11 :
+11 -&gt; 12 :
+12 -&gt; 13 :
+13 -&gt; 14 :
+14 -&gt; 15 :
+15 -&gt; 16 :
+16 -&gt; 17 :
+17 -&gt; 18 :
+18 -&gt; 19 :
+19 -&gt; 20 :</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="label99.Text" xml:space="preserve">
     <value>Weapon: 
- 0 -&gt;  1 : 95.00%
- 1 -&gt;  2 : 95.00%
- 2 -&gt;  3 : 95.00%
- 3 -&gt;  4 : 30.00%
- 4 -&gt;  5 : 27.00%
- 5 -&gt;  6 : 24.00%
- 6 -&gt;  7 : 21.00%
- 7 -&gt;  8 : 18.00%
- 8 -&gt;  9 : 15.00%
- 9 -&gt; 10 : 12.00%
-10 -&gt; 11 :  9.00%
-11 -&gt; 12 :  6.00%
-12 -&gt; 13 :  3.00%
-13 -&gt; 14 :  3.00%
-14 -&gt; 15 :  1.00%
-15 -&gt; 16 :  0.70%
-16 -&gt; 17 :  0.40%
-17 -&gt; 18 :  0.20%
-18 -&gt; 19 :  0.18%
-19 -&gt; 20 :  0.17%</value>
+ 0 -&gt;  1 :
+ 1 -&gt;  2 :
+ 2 -&gt;  3 :
+ 3 -&gt;  4 :
+ 4 -&gt;  5 :
+ 5 -&gt;  6 :
+ 6 -&gt;  7 :
+ 7 -&gt;  8 :
+ 8 -&gt;  9 :
+ 9 -&gt; 10 :
+10 -&gt; 11 :
+11 -&gt; 12 :
+12 -&gt; 13 :
+13 -&gt; 14 :
+14 -&gt; 15 :
+15 -&gt; 16 :
+16 -&gt; 17 :
+17 -&gt; 18 :
+18 -&gt; 19 :
+19 -&gt; 20 :</value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
