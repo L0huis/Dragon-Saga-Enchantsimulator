@@ -1,4 +1,4 @@
-# Dragon-Saga-Enchantsimulator# Dragon-Saga-Enchantsimulator
+# Dragon-Saga-Enchantsimulator
 
 It is used to calculate an expected usage of normal/reinforced insurance scrolls (IS/RIS) for enchanting and/or soulcrafting.
 
