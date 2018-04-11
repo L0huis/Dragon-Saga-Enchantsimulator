@@ -612,6 +612,7 @@
             this.tabPageProbabilities.TabIndex = 1;
             this.tabPageProbabilities.Text = "Successrates";
             this.tabPageProbabilities.UseVisualStyleBackColor = true;
+            this.tabPageProbabilities.Enter += new System.EventHandler(this.buttonViewSuccessrates_Click);
             // 
             // labelSCProbs
             // 
