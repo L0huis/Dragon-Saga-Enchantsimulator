@@ -70,7 +70,7 @@ namespace Soulcraft_Enchant
             {
                 for (int i = from; i < to; i++)
                 {
-                    expected += isWeap ? 1 / GetChance(pW, i, chance, percentage) : 1 / GetChance(pA, i, chance, percentage);
+                    expected += isWeap ? GetAvgExpected(pW, i, chance, percentage) : GetAvgExpected(pA, i, chance, percentage);
                 }
             }
             return expected;
@@ -117,7 +117,7 @@ namespace Soulcraft_Enchant
             {
                 for (int i = from; i < to; i++)
                 {
-                    expected += 1 / GetChance(pS, i, chance, percentage);
+                    expected += GetAvgExpected(pS, i, chance, percentage);
                 }
             }
             return expected;
@@ -168,7 +168,22 @@ namespace Soulcraft_Enchant
 
         public double GetExpected(double[] arr, int index, double chance, double percentage, double success)
         {
-            return (Math.Log(1 - success) / Math.Log(1 - GetChance(arr, index, chance, percentage)));
+            double expected = Math.Log(1 - success) / Math.Log(1 - GetChance(arr, index, chance, percentage));
+            if (GetChance(arr, index, chance, percentage) == 1)
+            {
+                return 0;
+            }
+            return expected < 1 ? 1 : expected;
+        }
+
+        public double GetAvgExpected(double[] arr, int index, double chance, double percentage)
+        {
+            double expected = 1/ GetChance(arr, index, chance, percentage);
+            if (expected <= 1)
+            {
+                return 0;
+            }
+            return expected;
         }
 
         public double GetChance(double[] arr, int index, double chance, double percentage)
